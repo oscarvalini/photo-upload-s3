@@ -1,0 +1,10 @@
+<p-menubar [model]="menuItems">
+    <ng-template pTemplate="start">
+        <h1 class="cursor-pointer" [routerLink]="['/']">Photo Upload</h1>
+    </ng-template>
+</p-menubar>
+
+
+<main>
+    <router-outlet></router-outlet>
+</main>

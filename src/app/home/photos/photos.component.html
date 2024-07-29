@@ -1,0 +1,40 @@
+<h1>Photo List</h1>
+
+<!-- url="https://www.primefaces.org/cdn/api/upload.php"  -->
+<!-- (onUpload)="onUpload($event)"  -->
+
+<ng-container *ngIf="(state$ | async) as state">
+    <p-fileUpload 
+        name="file" 
+        [customUpload]="true"
+        (uploadHandler)="onUpload($event)"
+        [files]="state.files"
+        accept="image/*" 
+        maxFileSize="1000000">
+    </p-fileUpload>
+    
+    <ng-container *ngIf="!state.loading">
+    
+        <p-table class="m-2" styleClass="" [value]="state.photos" [tableStyle]="{ 'min-width': '50rem', margin: '0 auto' }" [paginator]="true" [rows]="5">
+            <ng-template pTemplate="header">
+                <th>Key</th>
+                <th>Size</th>
+                <th>Last Modifed</th>
+                <th>Owner</th>
+                <th>Storage Class</th>
+            </ng-template>
+            <ng-template pTemplate="body" let-object>
+                <tr>
+                    <td>{{object.key}}</td>
+                    <td>{{object.size}}</td>
+                    <td>{{object.lastModified | date: 'short'}}</td>
+                    <td>{{object.owner}}</td>
+                    <td>{{object.class}}</td>
+                    <td>
+                        <button (click)="openObject(object)" pButton pRipple type="button" icon="pi pi-eye" class="p-button-rounded p-button-text"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </ng-container>
+</ng-container>

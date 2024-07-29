@@ -1,0 +1,64 @@
+<div>
+    <div>
+        <div>
+            <ng-container *ngIf="!isConfirm">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="username" id="username" name="username" #username="ngModel" [(ngModel)]="user.username">
+                </div>
+
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email">
+                </div>
+
+                <div>
+                    <label for="birthdate">Birthdate:</label>
+                    <input type="date" id="birthdate" name="birthdate" #birthdate="ngModel" [(ngModel)]="user.birthdate">
+                </div>
+
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="name" id="name" name="name" #name="ngModel" [(ngModel)]="user.name">
+                </div>
+
+                <div>
+                    <label for="gender">Gender:</label>
+
+                    <label for="genderf">F</label>
+                    <input type="radio" id="genderf" name="gender" #genderf="ngModel" value="M" [(ngModel)]="user.gender">
+                    <label for="genderm">M</label>
+                    <input type="radio" id="genderm" name="gender" #genderm="ngModel" value="F" [(ngModel)]="user.gender">
+                </div>
+
+                <div>
+                    <label for="password">Password:</label>
+                    <div>
+                        <input [type]="user.showPassword ? 'text' : 'password'" id="password" name="password"
+                            #password="ngModel" [(ngModel)]="user.password">
+                        <button type="button" (click)="user.showPassword = !user.showPassword">
+                            Show password
+                        </button>
+                    </div>
+                </div>
+
+                <button type="button" (click)="signUp()" [disabled]="loading">
+                    <span role="status" aria-hidden="true" *ngIf="loading"></span>
+                    Sign up
+                </button>
+            </ng-container>
+            <ng-container *ngIf="isConfirm">
+
+                <div>
+                    <label for="code">Code:</label>
+                    <input type="text" id="code" name="code" #code="ngModel" [(ngModel)]="user.code">
+                </div>
+
+                <button type="button" (click)="confirmSignUp()" [disabled]="loading">
+                    <span role="status" aria-hidden="true" *ngIf="loading"></span>
+                    Confirm
+                </button>
+            </ng-container>
+        </div>
+    </div>
+</div>
