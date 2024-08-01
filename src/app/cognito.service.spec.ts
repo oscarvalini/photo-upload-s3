@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
-import { CognitoService } from './cognito.service';
+import { AuthService } from './auth.service';
 
 describe('CognitoServiceService', () => {
-  let service: CognitoService;
+  let service: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CognitoService);
+    service = TestBed.inject(AuthService);
   });
 
   it('should be created', () => {

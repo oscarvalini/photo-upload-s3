@@ -1,18 +1,33 @@
+<p-toast />
 <p-card>
+
+  <h1 class="text-center">Sign In</h1>
+
   <div class="flex flex-column gap-2 mb-3">
-    <label for="email">Email:</label>
+    <label for="email">Username</label>
     <input pInputText type="email" id="email" name="email" #email="ngModel" [(ngModel)]="user.email">
   </div>
 
   <div class="flex flex-column gap-2 mb-3">
-    <label for="password">Password:</label>
 
-    <input pInputText [type]="user.showPassword ? 'text' : 'password'" id="password" name="password" #password="ngModel"
-      [(ngModel)]="user.password">
+    <label for="password">Password</label>
+    <p-iconField iconPosition="right">
+      <p-inputIcon class="pi" [styleClass]="showPassword ? 'pi-eye': 'pi-eye-slash'"
+        (click)="(showPassword = !showPassword)" />
+      <input style="width: 100%;" pInputText [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+        #password="ngModel" [(ngModel)]="user.password">
+    </p-iconField>
 
   </div>
 
-  <p-button class="flex justify-content-center" type="button" (click)="signIn()" severity="success" [disabled]="loading" label="Sign In" [raised]="true"
-    [outlined]="true">
+  <p-button class="flex justify-content-center" type="button" (click)="signIn()" severity="success" [disabled]="loading"
+    label="Sign In" [raised]="true" [outlined]="true">
   </p-button>
+
+  <ng-template pTemplate="footer">
+    <div class="text-center">
+      <a [routerLink]="['/signUp']">Sign Up</a>
+    </div>
+  </ng-template>
+
 </p-card>

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { CognitoService, IUser } from '../../cognito.service';
+import { AuthService, IUser } from '../../auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +15,7 @@ export class ProfileComponent {
   loading: boolean;
   user: IUser;
 
-  constructor(private cognitoService: CognitoService) {
+  constructor(private cognitoService: AuthService) {
     this.loading = false;
     this.user = {} as IUser;
   }

@@ -1,9 +1,10 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
-import { CognitoService } from './cognito.service';
+import { AuthService } from './auth.service';
 import { MenubarModule } from 'primeng/menubar'
 import { MenuItem } from 'primeng/api';
+import { filter, skip } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class AppComponent {
 
-  constructor(private readonly router: Router, private readonly cognitoService: CognitoService, private readonly route: ActivatedRoute) { }
+  constructor(private readonly router: Router, private readonly cognitoService: AuthService, private readonly route: ActivatedRoute) { }
 
   public ngOnInit(): void {
     this.cognitoService.isAuthenticated().then((success: boolean) => {
@@ -24,5 +25,7 @@ export class AppComponent {
           this.router.navigate(['/signIn'])
         }
       });
+      this.cognitoService.session$.pipe(filter(val => val === null)).pipe(skip(1)).subscribe(() => console.log('DESLOGAR'))
   }
+
 }

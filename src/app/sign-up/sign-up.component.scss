@@ -1,0 +1,18 @@
+:host {
+    display: block;
+    height: 100%;
+    position: relative;
+    
+    p-card {
+        width: 70%;
+        display: block;
+        position: inherit;
+        margin: 1rem auto;
+
+        ::ng-deep {
+            .p-card-body {
+                padding: 1rem 2rem;
+            }
+        }
+    }
+}

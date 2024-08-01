@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { CognitoService } from '../cognito.service';
+import { AuthService } from '../auth.service';
 import { MenubarModule } from 'primeng/menubar';
 
 @Component({
@@ -29,7 +29,7 @@ export class HomeComponent {
   ]
 
   constructor(private router: Router,
-    private cognitoService: CognitoService) {
+    private cognitoService: AuthService) {
   }
 
   public signOut(): void {
